@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strong Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+body{background:#f9f9f9;color:#111;}
+.announcement{background:#000;color:#fff;text-align:center;padding:10px;}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:#fff;position:sticky;top:0;border-bottom:1px solid #eee;}
+.logo{font-weight:900;font-size:22px;}
+nav a{margin-left:20px;text-decoration:none;color:#111;font-weight:600;}
+.hero{height:90vh;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1599058917212-d750089bc07e') center/cover;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;}
+.hero h1{font-size:50px;}
+.hero button{margin-top:20px;padding:15px 30px;border:none;background:#fff;font-weight:700;cursor:pointer;}
+.section{padding:60px 8%;}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+.product{background:#fff;padding:20px;border:1px solid #eee;text-align:center;}
+.product img{width:100%;height:250px;object-fit:cover;}
+.product button{margin-top:10px;padding:10px 20px;border:none;background:#000;color:#fff;cursor:pointer;}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">🔥 Free Shipping Above ₹999</div>
+
+<header>
+<div class="logo">STRONG SOUL</div>
+<nav>
+<a href="#">Shop</a>
+<a href="#" onclick="goToCart()">Cart (<span id="cart-count">0</span>)</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>BUILT FOR THE RELENTLESS</h1>
+<button onclick="scrollToProducts()">SHOP NOW</button>
+</div>
+</section>
+
+<section class="section" id="products">
+<h2>Products</h2>
+<div class="products" id="product-list"></div>
+</section>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [
+{ name:"Oversized Gym Tee", price:999, image:"https://images.unsplash.com/photo-1520975916090-3105956dac38" },
+{ name:"Gym Stringer", price:799, image:"https://images.unsplash.com/photo-1520974692156-24582c1dffb5" },
+{ name:"Monster Gallon", price:699, image:"https://images.unsplash.com/photo-1598974357801-cbca100e65d3" }
+];
+
+function loadProducts(){
+let container=document.getElementById("product-list");
+container.innerHTML="";
+products.forEach(p=>{
+container.innerHTML+=`
+<div class="product">
+<img src="${p.image}">
+<h3>${p.name}</h3>
+<p>₹${p.price}</p>
+<button onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
+</div>`;
+});
+}
+
+function addToCart(name,price){
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+updateCartCount();
+}
+
+function updateCartCount(){
+document.getElementById("cart-count").innerText=cart.length;
+}
+
+function goToCart(){
+window.location.href="cart.html";
+}
+
+function scrollToProducts(){
+document.getElementById("products").scrollIntoView({behavior:"smooth"});
+}
+
+window.onload=function(){
+loadProducts();
+updateCartCount();
+}
+</script>
+
+</body>
+</html>

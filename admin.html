@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+<body style="font-family:Arial;padding:40px;">
+
+<h1>Add Product</h1>
+
+<input id="name" placeholder="Product Name"><br><br>
+<input id="price" placeholder="Price"><br><br>
+<input id="image" placeholder="Image URL"><br><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<script>
+function addProduct(){
+let products=JSON.parse(localStorage.getItem("products"))||[];
+
+let product={
+name:document.getElementById("name").value,
+price:parseInt(document.getElementById("price").value),
+image:document.getElementById("image").value
+};
+
+products.push(product);
+localStorage.setItem("products",JSON.stringify(products));
+alert("Product Added!");
+}
+</script>
+
+</body>
+</html>

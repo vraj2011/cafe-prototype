@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Cart</title>
+</head>
+<body style="font-family:Arial;padding:40px;">
+
+<h1>Your Cart</h1>
+<div id="cart-items"></div>
+<h2 id="total"></h2>
+
+<button onclick="payNow()">Pay Now</button>
+<button onclick="clearCart()">Clear Cart</button>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let container=document.getElementById("cart-items");
+let total=0;
+
+if(cart.length===0){
+container.innerHTML="Your cart is empty.";
+}else{
+cart.forEach(item=>{
+total+=item.price;
+container.innerHTML+=`<p>${item.name} - ₹${item.price}</p>`;
+});
+}
+
+document.getElementById("total").innerText="Total: ₹"+total;
+
+function clearCart(){
+localStorage.removeItem("cart");
+location.reload();
+}
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function payNow(){
+if(total<=0){alert("Cart empty");return;}
+
+var options={
+"key":"YOUR_TEST_KEY_ID",
+"amount":total*100,
+"currency":"INR",
+"name":"Strong Soul",
+"description":"Fitness Purchase",
+"handler":function(response){
+alert("Payment Successful!");
+localStorage.removeItem("cart");
+window.location.href="index.html";
+}
+};
+var rzp=new Razorpay(options);
+rzp.open();
+}
+</script>
+
+</body>
+</html>
