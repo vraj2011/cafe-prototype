@@ -3,7 +3,17 @@ font-family:Arial;
 margin:0;
 background:#fafafa;
 }
+.hero-slider{
+position:relative;
+height:60vh;
+overflow:hidden;
+}
 
+.slide img{
+width:100%;
+height:60vh;
+object-fit:cover;
+}
 header{
 background:#3e2723;
 color:white;
