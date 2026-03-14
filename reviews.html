@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reviews</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+        </nav>
+
+    </header>
+
+    <h2>Customer Reviews</h2>
+
+    <div id="review-list"></div>
+
+    <h3>Leave a Review</h3>
+
+    <input id="name" placeholder="Your name">
+
+    <select id="rating">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+    </select>
+
+    <textarea id="review"></textarea>
+
+    <button onclick="addReview()">Submit</button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
