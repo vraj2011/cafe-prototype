@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fade-page">
+
+<header>
+<h1>Menu</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="cart.html">Cart</a>
+</nav>
+</header>
+
+<div class="menu-controls">
+
+<input id="search" placeholder="Search food..." onkeyup="filterMenu()">
+
+<select id="category" onchange="filterMenu()">
+<option value="all">All</option>
+<option value="coffee">Coffee</option>
+<option value="snacks">Snacks</option>
+<option value="dessert">Desserts</option>
+</select>
+
+</div>
+
+<div id="menu-list" class="menu-grid"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
