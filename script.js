@@ -1,46 +1,52 @@
 let cart = [];
 
-let menu = [
+let menu = JSON.parse(localStorage.getItem("menu")) || [
 
-    { name: "Cappuccino", price: 120, category: "coffee", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93" },
+{name:"Cappuccino",price:120,category:"coffee",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93"},
 
-    { name: "Sandwich", price: 160, category: "snacks", img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d" },
+{name:"Sandwich",price:160,category:"snacks",img:"https://images.unsplash.com/photo-1551782450-a2132b4ba21d"},
 
-    { name: "Cake", price: 180, category: "dessert", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b" }
+{name:"Chocolate Cake",price:180,category:"dessert",img:"https://images.unsplash.com/photo-1551024601-bec78aea704b"}
 
 ];
 
-function filterMenu() {
+function filterMenu(){
 
-    let list = document.getElementById("menu-list");
+let search = document.getElementById("search").value.toLowerCase();
+let category = document.getElementById("category").value;
 
-    if (!list) return;
+let list = document.getElementById("menu-list");
 
-    list.innerHTML = "";
+if(!list) return;
 
-    menu.forEach((item, i) => {
+list.innerHTML="";
 
-        let div = document.createElement("div");
+menu.forEach((item,i)=>{
 
-        div.className = "item";
+if(
+item.name.toLowerCase().includes(search) &&
+(category=="all" || item.category==category)
+){
 
-        div.innerHTML = `
+let div=document.createElement("div");
 
+div.className="item";
+
+div.innerHTML=`
 <img src="${item.img}">
 <h3>${item.name}</h3>
 <p>₹${item.price}</p>
 
 <button onclick="addCart(${i})">Add</button>
-
 `;
 
-        list.appendChild(div);
-
-    });
+list.appendChild(div);
 
 }
 
-filterMenu();
+});
+
+}
 function addMenuItem() {
 
     let pass = document.getElementById("admin-pass").value;
@@ -88,3 +94,4 @@ function sendWhatsApp() {
     window.open("https://wa.me/?text=" + text);
 
 }
+filterMenu();
