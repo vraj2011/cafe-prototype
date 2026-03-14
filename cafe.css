@@ -1,0 +1,82 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #3e2723;
+    color: white;
+}
+
+nav a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("https://images.unsplash.com/photo-1445116572660-236099ec97a0") center/cover;
+    color: white;
+    font-size: 30px;
+}
+
+section {
+    padding: 40px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform .3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}
+
+.item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: #3e2723;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#whatsapp {
+    display: inline-block;
+    margin-top: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+}
+
+.review {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}

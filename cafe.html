@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Cafe Aroma</h1>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#cart">Cart</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Fresh Coffee & Cozy Vibes</h2>
+    </section>
+
+    <section id="menu">
+        <h2>Menu</h2>
+
+        <div id="menu-list" class="menu"></div>
+
+        <h3>Admin Menu Editor</h3>
+        <input id="admin-pass" placeholder="Admin Password">
+        <input id="food-name" placeholder="Food name">
+        <input id="food-price" placeholder="Price">
+        <input id="food-img" placeholder="Image URL">
+        <button onclick="addMenu()">Add Item</button>
+
+    </section>
+
+    <section id="cart">
+
+        <h2>Your Cart</h2>
+        <div id="cart-list"></div>
+        <p id="total"></p>
+
+        <a id="whatsapp" target="_blank">Order via WhatsApp</a>
+
+    </section>
+
+    <section id="reviews">
+
+        <h2>Customer Reviews</h2>
+
+        <div id="review-list"></div>
+
+        <h3>Leave Review</h3>
+
+        <input id="name" placeholder="Your name">
+
+        <select id="rating">
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+        </select>
+
+        <textarea id="review"></textarea>
+
+        <button onclick="addReview()">Submit</button>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
