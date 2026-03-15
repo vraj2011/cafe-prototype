@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Velvet Brew Premium Cafe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav h1{
+color:#d4af37;
+font-family:Playfair Display;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav li{
+cursor:pointer;
+}
+
+/* HERO VIDEO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+.hero h2{
+font-size:70px;
+color:#d4af37;
+font-family:Playfair Display;
+}
+
+.hero p{
+margin-top:20px;
+}
+
+/* MENU */
+
+.menu{
+padding:120px 10%;
+}
+
+.menu-title{
+text-align:center;
+font-size:40px;
+color:#d4af37;
+margin-bottom:50px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:15px;
+transition:.3s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:rotateY(10deg) rotateX(10deg) scale(1.05);
+}
+
+.card h3{
+color:#d4af37;
+}
+
+/* CHATBOT */
+
+.chatbot{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+padding:20px;
+border-radius:15px;
+width:260px;
+}
+
+.chatbot input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+outline:none;
+}
+
+/* BOOKING */
+
+.booking{
+padding:100px 10%;
+text-align:center;
+}
+
+.booking input,
+.booking button{
+padding:12px;
+margin:10px;
+border:none;
+}
+
+.booking button{
+background:#d4af37;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+padding:50px;
+text-align:center;
+background:#111;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<h1>Velvet Brew</h1>
+
+<ul>
+<li>Home</li>
+<li>Menu</li>
+<li>Reserve</li>
+</ul>
+
+</nav>
+
+
+<section class="hero">
+
+<video autoplay muted loop>
+
+<source src="https://cdn.coverr.co/videos/coverr-making-coffee-1576/1080p.mp4">
+
+</video>
+
+<div>
+
+<h2>Luxury Coffee Experience</h2>
+
+<p>Premium taste crafted for perfection</p>
+
+</div>
+
+</section>
+
+
+<section class="menu">
+
+<h2 class="menu-title">Signature Menu</h2>
+
+<div class="grid">
+
+<div class="card"><h3>Espresso</h3><p>₹120</p></div>
+<div class="card"><h3>Latte</h3><p>₹200</p></div>
+<div class="card"><h3>Cappuccino</h3><p>₹180</p></div>
+<div class="card"><h3>Mocha</h3><p>₹220</p></div>
+<div class="card"><h3>Tiramisu</h3><p>₹300</p></div>
+<div class="card"><h3>Cheesecake</h3><p>₹260</p></div>
+
+</div>
+
+</section>
+
+
+<section class="booking">
+
+<h2>Reserve a Table</h2>
+
+<input placeholder="Your Name">
+
+<input type="date">
+
+<input type="time">
+
+<button>Book Table</button>
+
+</section>
+
+
+<div class="chatbot">
+
+<b>AI Waiter</b>
+
+<div id="chat"></div>
+
+<input id="userInput" placeholder="Ask about menu...">
+
+</div>
+
+
+<footer>
+
+Velvet Brew Luxury Cafe © 2026
+
+</footer>
+
+
+<script>
+
+/* SIMPLE AI WAITER */
+
+const input=document.getElementById("userInput")
+const chat=document.getElementById("chat")
+
+input.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+let text=input.value
+
+chat.innerHTML+="<p>You: "+text+"</p>"
+
+let reply="Try our Cappuccino or Tiramisu!"
+
+if(text.toLowerCase().includes("coffee"))
+reply="Our best coffee is Cappuccino ☕"
+
+if(text.toLowerCase().includes("dessert"))
+reply="Try our famous Tiramisu 🍰"
+
+chat.innerHTML+="<p>Waiter: "+reply+"</p>"
+
+input.value=""
+
+}
+
+})
+
+</script>
+
+</body>
+
+</html>
