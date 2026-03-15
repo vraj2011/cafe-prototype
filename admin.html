@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Admin</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<input id="admin-pass" type="password" placeholder="Password">
+
+<button onclick="unlock()">Login</button>
+
+<div id="admin-panel" style="display:none">
+
+<h2>Add Item</h2>
+
+<input id="name" placeholder="Name">
+
+<input id="price" placeholder="Price">
+
+<input id="category" placeholder="Category">
+
+<input id="img" placeholder="Image URL">
+
+<button onclick="addMenuItem()">Add</button>
+
+<div id="admin-menu"></div>
+
+<h2>Orders</h2>
+
+<div id="orders"></div>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>
