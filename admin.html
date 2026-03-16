@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<h2>Add Menu Item</h2>
+
+<input id="name" placeholder="Item name">
+
+<input id="price" placeholder="Price">
+
+<select id="category">
+
+<option value="coffee">Coffee</option>
+<option value="dessert">Dessert</option>
+<option value="food">Food</option>
+
+</select>
+
+<button onclick="addItem()">Add Item</button>
+
+<h3>Menu Items</h3>
+
+<div id="menuList"></div>
+
+<script>
+
+let menu = JSON.parse(localStorage.getItem("menu")) || []
+
+function displayMenu(){
+
+let list = document.getElementById("menuList")
+
+list.innerHTML=""
+
+menu.forEach((item,i)=>{
+
+list.innerHTML += `
+<p>
+
+${item.name} - ₹${item.price}
+
+<button onclick="deleteItem(${i})">Delete</button>
+
+</p>
+`
+
+})
+
+}
+
+function addItem(){
+
+let name=document.getElementById("name").value
+let price=document.getElementById("price").value
+let category=document.getElementById("category").value
+
+menu.push({name,price,category})
+
+localStorage.setItem("menu",JSON.stringify(menu))
+
+displayMenu()
+
+}
+
+function deleteItem(i){
+
+menu.splice(i,1)
+
+localStorage.setItem("menu",JSON.stringify(menu))
+
+displayMenu()
+
+}
+
+displayMenu()
+
+</script>
+
+</body>
+</html>
