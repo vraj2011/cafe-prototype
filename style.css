@@ -81,9 +81,22 @@ transition:.3s;
 .menu-card:hover{
 
 transform:translateY(-10px);
+.menu-card img{
+
+width:100%;
+height:180px;
+
+object-fit:cover;
+
+border-radius:10px;
 
 }
-
+}
+img{
+max-width:100%;
+height:auto;
+display:block;
+}
 button{
 
 background:#d4af37;
